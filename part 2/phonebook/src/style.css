@@ -1,0 +1,29 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-weight: normal;
+}
+
+body {
+  margin: 5px;
+  padding: 5px;
+}
+
+input {
+  margin: 5px;
+}
+
+.user-li {
+  display: flex;
+  gap: 1rem;
+  margin-left: -20px;
+}
+
+.error {
+  color: greenyellow;
+  background-color: rgb(88, 88, 88);
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
