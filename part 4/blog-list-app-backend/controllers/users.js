@@ -1,4 +1,4 @@
-// route for when a new user is registering.
+// route for when a new user is registering and fetching  user information.
 const userRouter = require('express').Router()
 const User = require('../models/user')
 const Blog = require('../models/blog')
@@ -23,6 +23,23 @@ userRouter.get('/:id', async (req, res, next) => {
     next(err)
   }
 
+})
+
+userRouter.get('/:id/blogs', async (req, res, next) => {
+  try {
+
+    const id = req.params.id
+
+    const user = await User.findById(id)
+    console.log('Trying to view bloglist for user: ', user)
+
+    const userBlogsToDisplay = await Blog.find({ userId: user._id })
+
+    res.status(200).json(userBlogsToDisplay)
+
+  } catch(err) {
+    next(err)
+  }
 })
 
 userRouter.delete('/:id', async (req, res, next) => {
