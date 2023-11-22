@@ -26,7 +26,7 @@ loginRouter.post('/', async (req, res, next) => {
     const userForToken = {
       username: user.username,
       id: user._id,
-      exp: Math.floor(Date.now() / 1000) + 60*60 // expires in (current time in seconds + 3,600 seconds) 1 hour.
+      exp: Math.floor(Date.now() / 1000) + 60 * 60, // expires in (current time in seconds + 3,600 seconds) 1 hour.
     }
 
     const token = jwt.sign(userForToken, process.env.SECRET) // create a new token signed digitally with our 'SECRET' signature string

@@ -30,7 +30,7 @@ userRouter.get('/:id/blogs', async (req, res, next) => {
 
     const id = req.params.id
 
-    const user = await User.findById(id)
+    const user = await User.findOne({ username: id })
     console.log('Trying to view bloglist for user: ', user)
 
     const userBlogsToDisplay = await Blog.find({ userId: user._id })
