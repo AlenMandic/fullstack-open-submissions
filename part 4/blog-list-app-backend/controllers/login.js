@@ -1,6 +1,6 @@
 // route for authenticating logins and assigning JWT's to logged in users.
 const jwt = require('jsonwebtoken') // for generating a JSON web token for authorization
-const bcrypt = require('bcrypt') // gonna need  bcrypt to compare incoming password to it's hash in our db. If it matches, good login.
+const bcrypt = require('bcrypt') // to compare incoming password to it's hash in our db. If it matches, good login.
 const loginRouter = require('express').Router()
 const User = require("../models/user")
 
@@ -32,7 +32,7 @@ loginRouter.post('/', async (req, res, next) => {
     const token = jwt.sign(userForToken, process.env.SECRET) // create a new token signed digitally with our 'SECRET' signature string
     console.log("token for user created: ", token)
 
-    // if all of the above is good, let's send back a status of 200, and the token itself so we can use it on the front-end to verify requests. This is a sucessfull login and the front-end has their token. This we can then keep using the token and send it to the front-end.
+    // if all of the above is good, let's send back a status of 200, and the token itself so we can use it on the front-end to verify requests. This is a succesfull login and the front-end has their token.
     res.status(200).send({ token, username: user.username, name: user.name })
   } catch(err) {
     next(err)
